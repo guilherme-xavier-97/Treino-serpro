@@ -25,19 +25,19 @@ public class CaminhoArquivo {
     }
 
     public static CaminhoArquivo getInstance(Integer id) {
-        String b = "/tmp/";
-        String d = null;
-        String n = null;
-        int div =-Math.floorDiv(-id, 1000);
+        String diretorio_raiz = "/tmp/";
+        String diretorio_especifico = null;
+        String auxiliar = null;
+        int divisor =-Math.floorDiv(-id, 1000);
 
-        d=b+div+"/";
-        n = d+id; 
+        diretorio_especifico=diretorio_raiz+divisor+"/";
+        auxiliar = diretorio_especifico+id; 
 
         if(id.equals(null)) {
             throw new NullPointerException();
         }     
 
-        return new CaminhoArquivo(Paths.get(d), Paths.get(n));
+        return new CaminhoArquivo(Paths.get(diretorio_especifico), Paths.get(auxiliar));
 
     }
 

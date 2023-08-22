@@ -1,20 +1,11 @@
 package br.com.bank.model;
 
-
-import static org.mockito.ArgumentMatchers.contains;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import org.hibernate.mapping.Map;
 
 public class Banco {
 
@@ -25,6 +16,7 @@ public class Banco {
     }
 
     private List<Conta> contasList = new ArrayList<>();
+    private final int VALOR_CONTAS_ALTA_RENDA = 10000;
 
     public void adicionarConta(Conta conta) {
         contasList.add(conta);
@@ -33,9 +25,6 @@ public class Banco {
     public Optional<Conta> pesquisarContaDoCliente(String cpf) {
 
         return contasList.stream().filter(c -> c.getCpf().equals(cpf)).findFirst();
-        
-        
-    
         /*
         Conta c = null;
         
@@ -46,16 +35,13 @@ public class Banco {
         }
      
         return c;
-         */ 
-        
-         
-          
+         */              
     }
 
 
 
     public List<Conta> listarContasAltaRenda() {
-        return filtrarContas(c -> c.getSaldo() >= 10000);
+        return filtrarContas(c -> c.getSaldo() >= VALOR_CONTAS_ALTA_RENDA);
     }
 
     
